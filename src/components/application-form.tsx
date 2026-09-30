@@ -51,7 +51,7 @@ export default function ApplicationForm() {
 
       form.reset();
       setStatus("success");
-      setStatusMessage("Başvurunuz kaydedildi. En kısa sürede sizinle iletişime geçeceğiz.");
+      setStatusMessage("Demo kaydınız Supabase'e kaydedildi ve yönetim panelinde görünecek. E-posta veya randevu bildirimi gönderilmez.");
     } catch {
       setStatus("error");
       setStatusMessage("Bağlantı kurulamadı. İnternetinizi kontrol edip yeniden deneyin.");
@@ -66,12 +66,12 @@ export default function ApplicationForm() {
     <form className="application-form" onSubmit={handleSubmit} noValidate>
       <div className="form-row">
         <div className="field-group">
-          <label htmlFor="name">Adınız soyadınız</label>
+          <label htmlFor="name">Ad soyad (örnek bilgi)</label>
           <input
             id="name"
             name="name"
             autoComplete="name"
-            placeholder="Örn. Deniz Yılmaz"
+            placeholder="Örnek Kullanıcı"
             aria-invalid={Boolean(errorFor("name"))}
             aria-describedby={errorFor("name") ? "name-error" : undefined}
             required
@@ -79,13 +79,13 @@ export default function ApplicationForm() {
           {errorFor("name") && <span className="field-error" id="name-error">{errorFor("name")}</span>}
         </div>
         <div className="field-group">
-          <label htmlFor="email">İş e-posta adresiniz</label>
+          <label htmlFor="email">E-posta (örnek adres kullanın)</label>
           <input
             id="email"
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="deniz@sirketiniz.com"
+            placeholder="ornek@ornek.com"
             aria-invalid={Boolean(errorFor("email"))}
             aria-describedby={errorFor("email") ? "email-error" : undefined}
             required
@@ -133,12 +133,12 @@ export default function ApplicationForm() {
       </div>
 
       <button className="button button-primary form-submit" type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "Kaydediliyor…" : "Ön görüşme talep et"}
+        {status === "sending" ? "Kaydediliyor…" : "Demo kaydı oluştur"}
         {status !== "sending" && <span aria-hidden="true">↗</span>}
       </button>
 
       <p className="form-privacy">
-        Bu form proje demosudur. Lütfen gerçek kişi veya müşteri verisi girmeyin; örnek bilgiler kullanın.
+        Bu değerlendirme demosunda örnek bilgi kullanın. Kayıt Supabase'e yazılır ve yönetim panelinde görünür; otomatik e-posta gönderilmez.
       </p>
 
       <p

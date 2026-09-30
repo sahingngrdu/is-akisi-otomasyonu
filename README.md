@@ -7,6 +7,7 @@ Küçük ve orta ölçekli işletmelerin tekrar eden işlerini azaltmaya ve mevc
 ## Kapsam
 
 - Türkçe, mobil uyumlu, erişilebilir bir hizmet landing page'i
+- Üç temsili iş akışı senaryosu, dört adımlı çalışma yaklaşımı ve sık sorulan sorular
 - İsim, e-posta, hizmet seçimi ve ihtiyaç açıklaması alanlarından oluşan başvuru formu
 - Aynı Zod şemasıyla istemci ve sunucu doğrulaması
 - Başvuru başarılı sayılmadan önce Supabase PostgreSQL'e kalıcı kayıt
@@ -17,7 +18,7 @@ Küçük ve orta ölçekli işletmelerin tekrar eden işlerini azaltmaya ve mevc
 - Başvuru ve iş akışı değişiklikleri için aktivite geçmişi
 - Sunucu anahtarlarının tarayıcı koduna taşınmaması
 
-Gerçek iş akışı entegrasyonları, müşteri e-postası gönderimi ve birden fazla yönetici rolü kapsam dışıdır. Magic link e-postası yalnızca giriş formunda yetkili adres istenince gönderilir.
+Gerçek iş akışı entegrasyonları, müşteri e-postası gönderimi ve birden fazla yönetici rolü kapsam dışıdır. Landing page'deki örnek senaryolar temsili anlatımdır; canlı entegrasyon veya müşteri sonucu iddiası değildir. Form yalnızca demo kaydı oluşturur ve otomatik geri dönüş planlamaz. Magic link e-postası yalnızca giriş formunda yetkili adres istenince gönderilir.
 
 ## Teknoloji
 

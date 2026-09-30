@@ -3,6 +3,8 @@
 ## AI desteğinin kullanıldığı alanlar
 
 - Ürün fikrini landing page kapsamına indirme ve sayfa akışını kurgulama
+- Landing page'e temsili iş akışı örnekleri, somut teslim adımları, proje kapsamı ve SSS ekleme
+- Demo formu ve içerik metinlerini gerçek geri dönüş/entegrasyon vaat etmeyecek şekilde netleştirme
 - Türkçe başlık, hizmet açıklaması ve form metinleri için ilk taslakları oluşturma
 - Next.js sayfa yapısı, özel CSS illüstrasyonu ve form bileşeni için kod üretme
 - Ortak Zod şemasıyla istemci/sunucu doğrulaması ve Supabase insert route'u hazırlama
@@ -23,6 +25,7 @@
 ## İnsan incelemesi ve doğrulama
 
 - Fikir, hedef kitle ve kapsam kullanıcı tarafından seçildi.
+- Temsili senaryolar canlı entegrasyon gibi sunulmayacak; demo formunun e-posta veya randevu göndermediği sayfada açıklandı.
 - Başarı mesajı, veritabanından dönen kayıt kimliği kontrol edildikten sonra gösterilecek şekilde tasarlandı.
 - Supabase `0002_admin_workflow.sql` migration'ı çalıştırıldı; şema kontrolü `application_events` tablosunu ve beş workflow alanını doğruladı.
 - `npm run typecheck` başarılı.

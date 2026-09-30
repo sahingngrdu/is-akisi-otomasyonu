@@ -79,10 +79,11 @@ const serviceCards = [
   },
 ];
 
-const steps = [
-  { number: "01", title: "İşi birlikte anlayalım", text: "Ekibin zamanını alan adımları ve kullanılan araçları haritalayalım." },
-  { number: "02", title: "Küçük bir akış tasarlayalım", text: "Önce tek bir sürece odaklanıp açık bir çözüm planı çıkaralım." },
-  { number: "03", title: "Kurup birlikte doğrulayalım", text: "Akışı devreye almadan önce örnek verilerle adım adım kontrol edelim." },
+const processSteps = [
+  { number: "01", title: "Süreci birlikte çıkarıyoruz", text: "Tetikleyiciyi, kullanılan araçları, sorumluları ve sık karşılaşılan istisnaları belirliyoruz." },
+  { number: "02", title: "İlk kapsamı netleştiriyoruz", text: "Tek bir akış, beklenen sonuç ve insan onayı gereken adımlar üzerinde anlaşıyoruz." },
+  { number: "03", title: "Örnek verilerle doğruluyoruz", text: "Normal ve hatalı senaryoları deneyip kayıt, bildirim ve hata davranışlarını kontrol ediyoruz." },
+  { number: "04", title: "Dokümante edip devrediyoruz", text: "Akış şemasını, ayarları ve ekibin kullanabileceği kısa notları teslim ediyoruz." },
 ];
 
 export default function Home() {
@@ -96,10 +97,12 @@ export default function Home() {
           </a>
           <nav className="main-nav" aria-label="Ana menü">
             <a href="#hizmetler">Hizmetler</a>
+            <a href="#ornekler">Örnek akışlar</a>
             <a href="#surec">Çalışma şeklimiz</a>
-            <a href="#hakkimizda">Hakkımızda</a>
+            <a href="#hakkimizda">Proje</a>
+            <a href="#sss">SSS</a>
           </nav>
-          <a className="button button-dark nav-cta" href="#iletisim">Birlikte düşünelim <ArrowIcon /></a>
+          <a className="button button-dark nav-cta" href="#iletisim">İhtiyacı paylaş <ArrowIcon /></a>
         </div>
       </header>
 
@@ -113,7 +116,7 @@ export default function Home() {
                 Tekrar eden operasyonları sadeleştiriyor, kullandığınız araçları birbirine bağlıyoruz. Ekibiniz işi kopyalamaya değil, ilerletmeye zaman ayırsın.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#iletisim">Sürecinizi konuşalım <ArrowIcon /></a>
+                <a className="button button-primary" href="#iletisim">İhtiyacı paylaşın <ArrowIcon /></a>
                 <a className="text-link" href="#surec">Nasıl çalışıyoruz? <span aria-hidden="true">↓</span></a>
               </div>
               <div className="hero-notes" aria-label="Hizmet özellikleri">
@@ -159,16 +162,49 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section examples-section" id="ornekler">
+          <div className="container">
+            <div className="section-heading section-heading-row">
+              <div>
+                <p className="eyebrow"><span className="eyebrow-mark" /> GÜNLÜK İŞLERDEN ÖRNEKLER</p>
+                <h2>Küçük akışlar,<br />gözle görülür rahatlık.</h2>
+              </div>
+              <p className="section-intro">Aşağıdaki senaryolar temsilidir. Gerçek akış; ekibinizin kullandığı araçlar, kurallar ve istisnalara göre tasarlanır.</p>
+            </div>
+            <div className="example-grid">
+              <article className="example-card">
+                <span className="example-tag">TALEP YÖNETİMİ</span>
+                <h3>Dağınık talepleri tek yerde toplayın</h3>
+                <p>Web formu veya ortak e-posta kutusuna gelen talep kayda dönüşür; konuya göre sınıflanır ve sorumlu kişiye bildirilir.</p>
+                <div className="example-flow"><span>Talep</span><i>→</i><span>Kayıt</span><i>→</i><span>Sorumluya bildirim</span></div>
+              </article>
+              <article className="example-card">
+                <span className="example-tag">İÇ OPERASYON</span>
+                <h3>Tekrarlanan veri girişini azaltın</h3>
+                <p>Bir formdaki onaylı bilgiler, ekip tablosuna aktarılır; eksik alanlar kontrol edilip tamamlanması gerekenler görünür olur.</p>
+                <div className="example-flow"><span>Form</span><i>→</i><span>Kontrol</span><i>→</i><span>Tablo</span></div>
+              </article>
+              <article className="example-card">
+                <span className="example-tag">ONAY SÜRECİ</span>
+                <h3>Bekleyen işleri görünür kılın</h3>
+                <p>Onay bekleyen kayıt ilgili kişiye yönlenir; yanıt gelmediğinde takip listesine düşer ve ekip durumunu izleyebilir.</p>
+                <div className="example-flow"><span>Kayıt</span><i>→</i><span>Onay</span><i>→</i><span>Takip</span></div>
+              </article>
+            </div>
+            <p className="illustrative-note">Bu örnekler sitede çalışan entegrasyonlar değildir; olası çözüm taslaklarını anlatır.</p>
+          </div>
+        </section>
+
         <section className="section process-section" id="surec">
           <div className="container process-layout">
             <div className="process-intro">
               <p className="eyebrow eyebrow-light"><span className="eyebrow-mark" /> KARMAŞIK DEĞİL, ADIM ADIM</p>
               <h2>Önce dinleriz.<br /><span>Sonra akışı kurarız.</span></h2>
-              <p>Otomasyona en çok ihtiyaç duyulan yer, genellikle en çok tekrar edilen iştir. Onu bulmak için önce ekibinizi dinleriz.</p>
-              <a className="button button-lime" href="#iletisim">İlk görüşmeyi planla <ArrowIcon /></a>
+              <p>Önce işin nasıl başladığını, hangi araçlardan geçtiğini ve nerede beklediğini anlarız. Sonra tek bir süreç için kapsamı ve başarı ölçütünü netleştiririz.</p>
+              <a className="button button-lime" href="#iletisim">İhtiyacı paylaş <ArrowIcon /></a>
             </div>
             <div className="step-list">
-              {steps.map((step) => (
+              {processSteps.map((step) => (
                 <article className="step-item" key={step.number}>
                   <span className="step-number">{step.number}</span>
                   <div><h3>{step.title}</h3><p>{step.text}</p></div>
@@ -183,14 +219,47 @@ export default function Home() {
           <div className="container about-layout">
             <div className="about-stamp" aria-hidden="true"><span>AKIŞ</span><i>✳</i><small>İŞİNİZE GÖRE<br />TASARLANIR</small></div>
             <div className="about-copy">
-              <p className="eyebrow"><span className="eyebrow-mark" /> YAKLAŞIMIMIZ</p>
-              <h2>Teknoloji, işinize<br />uyduğunda işe yarar.</h2>
-              <p>Küçük ve orta ölçekli ekiplerin süreçlerini daha anlaşılır ve tutarlı hale getirmesine yardımcı oluyoruz. Önce ihtiyacı tanımlar, sonra mevcut araçlarla uygulanabilir bir akış kurarız.</p>
+              <p className="eyebrow"><span className="eyebrow-mark" /> AÇIK VE GERÇEKÇİ KAPSAM</p>
+              <h2>Önce doğru problem.<br />Sonra doğru araç.</h2>
+              <p>Akış, küçük ve orta ölçekli ekipler için iş akışı otomasyonu hizmeti konseptidir. Bu portföy demosu; başvuru formu, sunucu doğrulaması, kalıcı kayıt ve korumalı yönetim paneliyle fikrin uçtan uca nasıl çalışabileceğini gösterir.</p>
               <div className="about-points">
-                <span><CheckIcon /> İhtiyaca göre tasarım</span>
-                <span><CheckIcon /> Açık ve izlenebilir adımlar</span>
-                <span><CheckIcon /> Ekibe devredilebilir kurulum</span>
+                <span><CheckIcon /> Form verisi hem istemcide hem sunucuda doğrulanır</span>
+                <span><CheckIcon /> Başvurular Supabase'te kalıcı saklanır</span>
+                <span><CheckIcon /> Yönetim paneli giriş ve değişiklik geçmişiyle korunur</span>
               </div>
+              <p className="project-transparency">Bu çalışma değerlendirme demosudur: örnek kayıtlar ve senaryolar kullanır; gerçek müşteri, referans veya sonuç iddiası içermez.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section faq-section" id="sss">
+          <div className="container faq-layout">
+            <div className="faq-heading">
+              <p className="eyebrow"><span className="eyebrow-mark" /> SIK SORULAN SORULAR</p>
+              <h2>Başlamadan önce<br />bilmeniz gerekenler.</h2>
+              <p>Her öneri, mevcut işleyiş ve araçlar incelendikten sonra netleşir.</p>
+            </div>
+            <div className="faq-list">
+              <details>
+                <summary>Hangi araçlarla çalışabilir?</summary>
+                <p>Önce kullandığınız araçların entegrasyon seçeneklerini ve erişim izinlerini inceleriz. Uygun bağlantı yoksa güvenilir bir alternatif ve manuel kontrol adımı birlikte değerlendirilir.</p>
+              </details>
+              <details>
+                <summary>Her işi otomatikleştirmek gerekir mi?</summary>
+                <p>Hayır. Sık tekrarlanan ve kuralları belirgin adımlar iyi adaylardır. İstisna veya karar gerektiren noktalarda insan onayı akışta kalmalıdır.</p>
+              </details>
+              <details>
+                <summary>Mevcut araçlarımızı değiştirmemiz gerekir mi?</summary>
+                <p>İlk tercih, mevcut araçlarla uygulanabilir bir çözüm kurmaktır. Değişiklik ancak mevcut araçlar ihtiyacı karşılamıyorsa gündeme gelir.</p>
+              </details>
+              <details>
+                <summary>Süre ve maliyet nasıl belirlenir?</summary>
+                <p>Bağlanacak araç sayısı, akışın adımları ve istisnalar netleşmeden süre veya fiyat sözü vermek doğru olmaz. Bu demo teklif üretmez; önce kapsamı anlamaya yönelik bir başvuru kaydı alır.</p>
+              </details>
+              <details>
+                <summary>Formu gönderince ne olur?</summary>
+                <p>Bu değerlendirme demosunda kayıt Supabase veritabanına yazılır ve yönetim panelinde görünür. Otomatik e-posta gönderimi veya takvim randevusu şu an yapılandırılmış değildir.</p>
+              </details>
             </div>
           </div>
         </section>
@@ -200,14 +269,14 @@ export default function Home() {
             <div className="contact-copy">
               <p className="eyebrow eyebrow-light"><span className="eyebrow-mark" /> İLK ADIM</p>
               <h2>İş akışınız nerede<br /><span>takılıyor?</span></h2>
-              <p>İhtiyacınızı birkaç cümleyle anlatın. Ön görüşmede mevcut süreci ve ilk küçük adımı birlikte değerlendirelim.</p>
+              <p>İhtiyacınızı örnek bilgilerle anlatın. Bu demo kaydı başvuru panelinde saklar; gerçek bir görüşme veya otomatik geri dönüş planlamaz.</p>
               <div className="contact-aside">
                 <span className="contact-aside-icon" aria-hidden="true">↳</span>
-                <span><strong>Hazır çözüm satışı değil.</strong><small>Önce sizin işleyişinizi anlamak için kısa bir görüşme.</small></span>
+                <span><strong>Önce ihtiyaç, sonra kapsam.</strong><small>Canlı hizmette görüşme ve teslim takvimi kapsam netleşince belirlenir.</small></span>
               </div>
             </div>
             <div className="form-card">
-              <div className="form-card-heading"><span>ÖN GÖRÜŞME TALEBİ</span><span className="form-card-index">01 / 01</span></div>
+              <div className="form-card-heading"><span>DEMO BAŞVURU KAYDI</span><span className="form-card-index">01 / 01</span></div>
               <ApplicationForm />
             </div>
           </div>

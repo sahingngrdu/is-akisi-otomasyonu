@@ -410,6 +410,16 @@ h1 span { color: #587b3a; }
 .service-card > a .arrow-icon { width: 13px; height: 13px; transform: rotate(-45deg); }
 .illustrative-note { margin: 19px 0 0; color: #929d96; font-size: 10px; text-align: right; }
 
+.examples-section { background: #f0f3ed; }
+.example-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.example-card { min-height: 250px; display: flex; flex-direction: column; padding: 24px; border: 1px solid #e0e7dc; border-radius: 11px; background: #fff; }
+.example-tag { align-self: flex-start; padding: 6px 9px; border-radius: 5px; background: #f0f6e9; color: #668d3f; font-size: 9px; font-weight: 700; letter-spacing: .7px; }
+.example-card h3 { margin: 20px 0 9px; font-size: 17px; line-height: 1.35; letter-spacing: -.35px; }
+.example-card p { margin: 0 0 20px; color: #77837d; font-size: 12px; line-height: 1.7; }
+.example-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 15px; border-top: 1px solid #edf0ec; }
+.example-flow span { padding: 6px 8px; border: 1px solid #e8ede6; border-radius: 5px; color: #536259; font-size: 9px; font-weight: 600; }
+.example-flow i { color: #87a66a; font-size: 11px; font-style: normal; }
+
 .process-section { overflow: hidden; position: relative; background: var(--navy); color: #f4f7f2; }
 .process-section::before, .contact-section::before { position: absolute; width: 480px; height: 480px; border: 1px solid rgba(201, 241, 161, 0.08); border-radius: 50%; content: ""; }
 .process-section::before { top: -240px; right: -110px; box-shadow: 0 0 0 65px rgba(201, 241, 161, 0.025), 0 0 0 130px rgba(201, 241, 161, 0.02); }
@@ -438,6 +448,22 @@ h1 span { color: #587b3a; }
 .about-copy h2 { margin-bottom: 17px; }
 .about-copy > p:not(.eyebrow) { max-width: 545px; margin-bottom: 20px; color: #6f7c75; font-size: 14px; line-height: 1.8; }
 .about-points { display: flex; flex-wrap: wrap; gap: 12px 22px; color: #58685f; font-size: 11px; font-weight: 600; }
+.about-points > span { display: inline-flex; align-items: flex-start; gap: 7px; }
+.about-points .check-icon { flex: 0 0 15px; margin-top: 1px; }
+.project-transparency { margin: 18px 0 0; padding: 12px 14px; border-left: 3px solid #9ac66a; border-radius: 0 6px 6px 0; background: rgba(255, 255, 255, .62); color: #69766e; font-size: 11px !important; line-height: 1.65 !important; }
+
+.faq-section { background: #fff; }
+.faq-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+.faq-heading .eyebrow { margin-bottom: 18px; }
+.faq-heading h2 { margin: 0 0 16px; font-size: clamp(32px, 4vw, 44px); line-height: 1.15; letter-spacing: -1.2px; }
+.faq-heading > p:last-child { max-width: 340px; margin: 0; color: #717d77; font-size: 13px; line-height: 1.7; }
+.faq-list { border-top: 1px solid #e4e9e4; }
+.faq-list details { padding: 18px 0; border-bottom: 1px solid #e4e9e4; }
+.faq-list summary { position: relative; padding-right: 32px; color: #26362f; font-size: 13px; font-weight: 700; line-height: 1.5; cursor: pointer; list-style: none; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { position: absolute; top: 0; right: 2px; color: #6e914c; content: "+"; font-size: 20px; font-weight: 500; line-height: 1; }
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list details p { max-width: 650px; margin: 11px 28px 0 0; color: #718078; font-size: 12px; line-height: 1.75; }
 
 .contact-section { overflow: hidden; position: relative; padding: 100px 0 106px; background: var(--dark); color: #f5f8f3; }
 .contact-section::before { right: -250px; bottom: -285px; box-shadow: 0 0 0 55px rgba(201, 241, 161, 0.025), 0 0 0 110px rgba(201, 241, 161, 0.015); }
@@ -495,6 +521,9 @@ h1 span { color: #587b3a; }
   .process-layout { gap: 45px; }
   .about-layout { gap: 45px; }
   .contact-layout { gap: 45px; }
+  .example-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .example-card:last-child { grid-column: 1 / -1; }
+  .faq-layout { gap: 45px; }
 }
 
 @media (max-width: 680px) {
@@ -539,7 +568,14 @@ h1 span { color: #587b3a; }
   .service-card-top { margin-bottom: 15px; }
   .service-card h3 { font-size: 17px; }
   .illustrative-note { text-align: left; line-height: 1.5; }
+  .example-grid { grid-template-columns: 1fr; gap: 11px; }
+  .example-card { min-height: 220px; padding: 20px; }
+  .example-card:last-child { grid-column: auto; }
   .process-layout, .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 38px; }
+  .faq-layout { grid-template-columns: 1fr; gap: 26px; }
+  .faq-heading h2 { font-size: 35px; }
+  .faq-list summary { font-size: 12px; }
+  .faq-list details p { font-size: 11px; }
   .process-intro h2, .contact-copy h2 { font-size: 37px; }
   .process-intro > p:not(.eyebrow), .contact-copy > p:not(.eyebrow) { font-size: 12px; }
   .step-item { min-height: 100px; grid-template-columns: 32px 1fr 18px; gap: 9px; padding: 21px 0; }
