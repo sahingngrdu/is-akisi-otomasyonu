@@ -36,9 +36,9 @@ export async function POST(request: NextRequest) {
   }
 
   const supabaseUrl = process.env.SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const secretKey = process.env.SUPABASE_SECRET_KEY;
 
-  if (!supabaseUrl || !serviceRoleKey) {
+  if (!supabaseUrl || !secretKey) {
     return NextResponse.json(
       {
         ok: false,
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const supabase = createClient(supabaseUrl, serviceRoleKey, {
+    const supabase = createClient(supabaseUrl, secretKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
 

@@ -18,4 +18,7 @@ alter table public.applications enable row level security;
 
 -- Public and signed-in clients cannot read or write submissions directly.
 -- The server route uses the service-role secret, which must never reach the browser.
-revoke all on table public.applications from anon, authenticated;
+revoke all on table public.applications from anon, authenticated, service_role;
+grant usage on schema public to service_role;
+grant insert (name, email, service_type, description) on table public.applications to service_role;
+grant select (id) on table public.applications to service_role;

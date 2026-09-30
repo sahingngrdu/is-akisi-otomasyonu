@@ -37,7 +37,7 @@ npm install
 Copy-Item .env.example .env.local
 ~~~
 
-`.env.local` içine Supabase proje URL'sini ve yalnızca sunucuda kullanılacak `service_role` anahtarını yazın. Bu dosyayı GitHub'a göndermeyin.
+`.env.local` içine Supabase proje URL'sini ve yalnızca sunucuda kullanılacak secret key'i yazın. Bu dosyayı GitHub'a göndermeyin.
 
 3. Supabase SQL Editor'de [migration dosyasındaki](supabase/migrations/0001_create_applications.sql) SQL'i çalıştırın.
 
@@ -53,24 +53,24 @@ Site `http://localhost:3000` adresinde açılır.
 
 Tarayıcı formu `/api/applications` adresine JSON gönderir. İstemci şeması hızlı geri bildirim sağlar; API aynı alanları yeniden doğrular. Sunucu `applications` tablosuna kayıt ekleyip yeni satırın kimliğini aldığında `201` döndürür. Form yalnızca bu yanıtı aldığında başarı mesajı gösterir. Supabase yapılandırması yoksa veya kayıt başarısızsa form başarı göstermeden hata mesajı verir.
 
-Tabloda RLS açıktır; `anon` ve `authenticated` rollerinin doğrudan tablo erişimi yoktur. Supabase `service_role` anahtarı yalnızca API route'unda kullanılır. Bu anahtar `NEXT_PUBLIC_` öneki almamalı ve istemciye gönderilmemelidir.
+Tabloda RLS açıktır; `anon` ve `authenticated` rollerinin doğrudan tablo erişimi yoktur. Supabase secret key yalnızca API route'unda kullanılır ve `service_role` rolüyle çalışır. Migration bu role yalnızca form alanlarını ekleme ve dönen kayıt kimliğini okuma izni verir. Secret key `NEXT_PUBLIC_` öneki almamalı, istemciye veya kaynak koda konmamalıdır.
 
 ## Supabase kurulumu
 
 1. Yeni bir Supabase projesi açın.
 2. SQL Editor'de `supabase/migrations/0001_create_applications.sql` dosyasını çalıştırın.
-3. Project URL ve `service_role` anahtarını Vercel proje ayarlarında ve yerel `.env.local` dosyasında şu adlarla tanımlayın:
+3. Project URL değerini Connect penceresinden; `sb_secret_...` biçimindeki secret key'i Project Settings → API Keys bölümünden alın. Secret key yoksa bu sayfadan oluşturun. İki değeri Vercel proje ayarlarında ve yerel `.env.local` dosyasında şu adlarla tanımlayın:
 
 ~~~text
 SUPABASE_URL
-SUPABASE_SERVICE_ROLE_KEY
+SUPABASE_SECRET_KEY
 ~~~
 
-> Supabase Free projeleri düşük etkinlikte yedi gün sonra otomatik duraklatılabilir. Uzun süreli değerlendirme öncesinde proje durumunu kontrol edin.
+> Supabase secret key, `service_role` rolüyle çalışır ve RLS'yi atlar; yalnızca sunucu tarafında kullanın. Eski JWT tabanlı `service_role` anahtarları Supabase tarafından 2026 sonuna kadar kullanımdan kaldırılmak üzere planlanmıştır. Free plan projeleri düşük etkinlikte 7 gün sonra duraklatılabilir; uzun süreli değerlendirme öncesinde proje durumunu kontrol edin.
 
 ## Vercel'de yayınlama
 
-GitHub deposunu Vercel'e bağlayın. Vercel Next.js yapılandırmasını otomatik tanır. `SUPABASE_URL` ve `SUPABASE_SERVICE_ROLE_KEY` değerlerini Project Settings → Environment Variables bölümünde tanımlayıp yeniden dağıtın. Canlı adres, ilk başarılı Production Deployment sonrasında Vercel'in verdiği `.vercel.app` adresidir.
+GitHub deposunu Vercel'e bağlayın. Vercel Next.js yapılandırmasını otomatik tanır. `SUPABASE_URL` ve `SUPABASE_SECRET_KEY` değerlerini Project Settings → Environment Variables bölümünde tanımlayıp yeniden dağıtın. Canlı adres, ilk başarılı Production Deployment sonrasında Vercel'in verdiği `.vercel.app` adresidir.
 
 Vercel Hobby planı kişisel ve ticari olmayan projeler içindir; bu demo ticari amaçla kullanılmamalıdır. Değerlendirme bağlantısı ve teslim commit kimliği yayınlama sonrasında bu README'ye eklenebilir.
 
