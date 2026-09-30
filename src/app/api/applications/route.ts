@@ -1,6 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { applicationSchema } from "@/lib/application-schema";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 
@@ -15,7 +15,14 @@ export async function POST(request: NextRequest) {
 
   let body: unknown;
   try {
-    body = await request.json();
+    const rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).byteLength > 8_000) {
+      return NextResponse.json(
+        { ok: false, message: "İstek boyutu sınırı aşıldı." },
+        { status: 413 },
+      );
+    }
+    body = JSON.parse(rawBody);
   } catch {
     return NextResponse.json(
       { ok: false, message: "Gönderilen veri okunamadı." },
@@ -35,10 +42,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const secretKey = process.env.SUPABASE_SECRET_KEY;
-
-  if (!supabaseUrl || !secretKey) {
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SECRET_KEY) {
     return NextResponse.json(
       {
         ok: false,
@@ -49,9 +53,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const supabase = createClient(supabaseUrl, secretKey, {
-      auth: { autoRefreshToken: false, persistSession: false },
-    });
+    const supabase = createSupabaseAdminClient();
 
     const { data, error } = await supabase
       .from("applications")

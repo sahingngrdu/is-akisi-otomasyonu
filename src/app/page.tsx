@@ -225,7 +225,7 @@ export default function Home() {
         </div>
         <div className="container footer-bottom">
           <span>© 2026 Akış. Bu çalışma değerlendirme amaçlı bir demodur.</span>
-          <span>Örnek veriler kullanın · Gerçek müşteri verisi girmeyin</span>
+          <span>Örnek veriler kullanın · Gerçek müşteri verisi girmeyin · <a href="/admin/login">Yönetici girişi</a></span>
         </div>
       </footer>
     </>
