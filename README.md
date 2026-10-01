@@ -1,6 +1,8 @@
-# Akış
+# Akış — İş akışı otomasyonu
 
-Küçük ve orta ölçekli işletmelerin tekrar eden işlerini azaltmaya ve mevcut araçlarını birbirine bağlamaya odaklanan iş akışı otomasyonu hizmetinin tanıtım sitesi.
+Akış, küçük ve orta ölçekli işletmelerin tekrar eden işlerini azaltıp kullandıkları araçları birbirine bağlamaya yönelik iş akışı otomasyonu hizmetini tanıtan bir ürün demosudur. Ziyaretçiler ihtiyaçlarını demo formuyla iletebilir; kayıt Supabase'te saklanır ve yetkili yönetici panelinden takip edilebilir.
+
+**Canlı demo:** [is-akisi-otomasyonu.vercel.app](https://is-akisi-otomasyonu.vercel.app)
 
 > Bu repo değerlendirme amaçlı bir demodur. Lütfen formda yalnızca örnek bilgiler kullanın; gerçek müşteri veya kişisel veri göndermeyin.
 
@@ -84,9 +86,9 @@ SUPABASE_ADMIN_EMAILS
 
 ## Vercel'de yayınlama
 
-GitHub deposunu Vercel'e bağlayın. Vercel Next.js yapılandırmasını otomatik tanır. `SUPABASE_URL` ve `SUPABASE_SECRET_KEY` değerlerini Project Settings → Environment Variables bölümünde tanımlayıp yeniden dağıtın. Canlı adres, ilk başarılı Production Deployment sonrasında Vercel'in verdiği `.vercel.app` adresidir.
+Canlı site: [https://is-akisi-otomasyonu.vercel.app](https://is-akisi-otomasyonu.vercel.app). GitHub deposunun `main` dalına gönderilen commitler Vercel'de Production deployment başlatır. Supabase ortam değişkenleri Vercel Project Settings → Environment Variables bölümünde tanımlanmalıdır. Magic link girişini kullanmak için canlı adresi Supabase Authentication → URL Configuration içindeki Site URL ve Redirect URLs ayarlarına ekleyin; callback adresi `https://is-akisi-otomasyonu.vercel.app/auth/callback` olmalıdır.
 
-Vercel Hobby planı kişisel ve ticari olmayan projeler içindir; bu demo ticari amaçla kullanılmamalıdır. Değerlendirme bağlantısı ve teslim commit kimliği yayınlama sonrasında bu README'ye eklenebilir.
+Vercel Hobby planı kişisel ve ticari olmayan projeler içindir; bu demo ticari amaçla kullanılmamalıdır.
 
 ## Doğrulama
 
